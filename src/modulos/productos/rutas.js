@@ -4,8 +4,8 @@ const { verificarToken } = require("../../middleware/aut");
 
 const router = express.Router();
 
-router.post("/", ctrl.crear);
-router.get("/", verificarToken, ctrl.leer);
-router.put("/", verificarToken, ctrl.eliminar);
+// router.post("/", ctrl.crear);
+// router.get("/", verificarToken, ctrl.leer);
+router.put("/", ctrl.comprar);
 
 module.exports = router;

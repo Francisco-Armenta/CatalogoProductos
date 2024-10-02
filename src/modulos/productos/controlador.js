@@ -23,7 +23,7 @@ async function crear(req, res, next) {
 async function leer(req, res, next) {
   const activo = req.token.activo;
   if (activo === 1) {
-    res.status(200);
+    return res.status(200).json("hola");
   }
   try {
     const item = await servicios.leer();
@@ -34,17 +34,22 @@ async function leer(req, res, next) {
   }
 }
 
-async function eliminar(req, res, next) {
+//--------COMPRAR----------COMPRAR-----------COMPRAR--------------------------
+async function comprar(req, res, next) {
   try {
-    const item = await servicios.eliminar(req.body.id);
-    if (req.body.id) {
-      const mensaje = "Usuario eliminado con exito";
+    const item = await servicios.comprar(req.body);
 
+    console.log(item[0][0].resultado);
+
+    if (req.body.sku && req.body.cantidad && item[0][0].resultado == 1) {
+      const mensaje = "Gracias por su compra";
       respuesta.success(req, res, mensaje, 200);
+    } else {
+      res.status(500).json(item[0][0].mensaje);
     }
   } catch (err) {
     next(err);
   }
 }
 
-module.exports = { crear, leer, eliminar };
+module.exports = { crear, leer, comprar };

@@ -77,4 +77,20 @@ function query(tabla, consulta) {
   });
 }
 
-module.exports = { crearUsuario, leerUsuarios, eliminarUsuario };
+function comprarProducto(tabla, data) {
+  const { id, sku, cantidad } = data;
+  const sql = `CALL sp_ValidCantidad(${cantidad}, '${sku}')`;
+  return new Promise((resolve, reject) => {
+    connection.query(sql, (err, result) => {
+      return err ? reject((result.affectedRows = 0)) : resolve(result);
+    });
+  });
+}
+
+module.exports = {
+  crearUsuario,
+  leerUsuarios,
+  eliminarUsuario,
+  query,
+  comprarProducto,
+};

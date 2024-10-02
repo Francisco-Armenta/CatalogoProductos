@@ -3,6 +3,6 @@ const ctrl = require("./controlador");
 
 const router = express.Router();
 
-router.get("/login", ctrl.login);
+router.get("/", ctrl.login);
 
 module.exports = router;
