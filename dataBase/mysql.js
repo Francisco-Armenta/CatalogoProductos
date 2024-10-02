@@ -41,7 +41,6 @@ function crearUsuario(tabla, data) {
   });
 }
 
-<<<<<<< HEAD
 function leerUsuarios(tabla) {
   return new Promise((resolve, reject) => {
     connection.query(
@@ -66,8 +65,6 @@ function eliminarUsuario(tabla, id) {
   });
 }
 
-=======
->>>>>>> d1983fec5ab553d1d92350b8554a7ff134d062a4
 function query(tabla, consulta) {
   return new Promise((resolve, reject) => {
     connection.query(
@@ -80,8 +77,4 @@ function query(tabla, consulta) {
   });
 }
 
-<<<<<<< HEAD
 module.exports = { crearUsuario, leerUsuarios, eliminarUsuario };
-=======
-module.exports = { crearUsuario, query };
->>>>>>> d1983fec5ab553d1d92350b8554a7ff134d062a4

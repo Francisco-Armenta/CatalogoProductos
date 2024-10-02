@@ -1,11 +1,8 @@
 const servicios = require("./servicios");
 const respuesta = require("../../Red/respuestas");
 
-<<<<<<< HEAD
 //--------CREAR-------CREAR------CREAR-------------------
 
-=======
->>>>>>> d1983fec5ab553d1d92350b8554a7ff134d062a4
 async function crear(req, res, next) {
   try {
     const item = await servicios.crear(req.body);
@@ -21,7 +18,6 @@ async function crear(req, res, next) {
   }
 }
 
-<<<<<<< HEAD
 //--------LEER--------LEER--------LEER----------------------
 
 async function leer(req, res, next) {
@@ -48,6 +44,3 @@ async function eliminar(req, res, next) {
 }
 
 module.exports = { crear, leer, eliminar };
-=======
-module.exports = { crear };
->>>>>>> d1983fec5ab553d1d92350b8554a7ff134d062a4
