@@ -4,6 +4,9 @@ const respuesta = require("../../Red/respuestas");
 //--------CREAR-------CREAR------CREAR-------------------
 
 async function crear(req, res, next) {
+  const rol = req.token.rol;
+  if (rol !== "administrador")
+    return res.status(404).json("no tienen los permisos");
   try {
     const item = await servicios.crear(req.body);
     if (!req.body.id) {
@@ -22,8 +25,10 @@ async function crear(req, res, next) {
 
 async function leer(req, res, next) {
   const activo = req.token.activo;
-  if (activo === 1) {
-    res.status(200);
+  if (activo != 1) {
+    return res
+      .status(404)
+      .json({ ok: false, msg: "El usuario no esta activo" });
   }
   try {
     const item = await servicios.leer();

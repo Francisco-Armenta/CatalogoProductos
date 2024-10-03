@@ -16,6 +16,7 @@ function verificarToken(req, res, next) {
   try {
     const secret = config.jwt.secret;
     const verToken = jwt.verify(token, secret);
+
     req.token = verToken;
     next();
   } catch (error) {

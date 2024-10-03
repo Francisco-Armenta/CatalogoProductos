@@ -68,7 +68,7 @@ function eliminarUsuario(tabla, id) {
 function query(tabla, consulta) {
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM ${tabla} WHERE ?`,
+      `SELECT * FROM ${tabla} WHERE ? AND activo = 1`,
       consulta,
       (err, result) => {
         return err ? reject(err) : resolve(result);
@@ -82,7 +82,7 @@ function comprarProducto(tabla, data) {
   const sql = `CALL sp_ValidCantidad(${cantidad}, '${sku}')`;
   return new Promise((resolve, reject) => {
     connection.query(sql, (err, result) => {
-      return err ? reject((result.affectedRows = 0)) : resolve(result);
+      return err ? reject(err) : resolve(result);
     });
   });
 }

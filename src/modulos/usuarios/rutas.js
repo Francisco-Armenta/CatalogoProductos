@@ -4,7 +4,7 @@ const { verificarToken } = require("../../middleware/aut");
 
 const router = express.Router();
 
-router.post("/", ctrl.crear);
+router.post("/", verificarToken, ctrl.crear);
 router.get("/", verificarToken, ctrl.leer);
 router.put("/", verificarToken, ctrl.eliminar);
 
